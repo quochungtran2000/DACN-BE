@@ -9,7 +9,10 @@
     "start": "npm run build && node ./build/app.js",
     "tslint": "tslint --project tsconfig.json",
     "build": "tsc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier:base": "prettier --parser typescript --single-quote",
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
   },
   "author": "hung",
   "license": "ISC",
