@@ -11,10 +11,9 @@ import {
 export const dbConfig: ConnectionOptions = {
   type: 'postgres',
   host: DB_PG_HOST,
-        port: Number(DB_PG_PORT) || 5432,
-        username: DB_PG_USERNAME,
-        password: DB_PG_PASSWORD,
-        database: DB_PG_NAME,
-        entities: [User],
-}
-
+  port: Number(DB_PG_PORT) || 5432,
+  username: DB_PG_USERNAME,
+  password: DB_PG_PASSWORD,
+  database: DB_PG_NAME,
+  entities: [User],
+};

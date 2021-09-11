@@ -2,15 +2,15 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'res_partner' })
 export class User extends BaseEntity {
-  @PrimaryColumn({name: 'id'})
+  @PrimaryColumn({ name: 'id' })
   id!: number;
 
-  @Column({name: 'username'})
+  @Column({ name: 'username' })
   username!: string;
 
-  @Column({name: 'password'})
+  @Column({ name: 'password' })
   password!: string;
 
-  @Column({name: 'public'})
+  @Column({ name: 'public' })
   publish?: boolean;
 }
