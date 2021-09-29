@@ -1,12 +1,14 @@
-import { Router } from 'express';
+import { Application, Router } from 'express';
 import { redirectToDashboard } from '../controller';
 import { test } from '../controller/user';
 const router = Router();
 
-router.get('/', redirectToDashboard);
+export const initialRouter = (app: Application) => {
+  router.get('/dashboard', redirectToDashboard);
 
-router.get('/ping');
+  router.get('/ping');
 
-router.get('/user', test);
+  router.get('/user', test);
 
-export default router;
+  return app.use(`/api/v1`, router);
+};
