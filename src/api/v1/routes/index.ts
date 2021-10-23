@@ -1,6 +1,6 @@
 import { Application, Router } from 'express';
-import { redirectToDashboard } from '../controller';
-import { test } from '../controller/user';
+import { redirectToDashboard } from '../controllers';
+import { test } from '../controllers/user';
 const router = Router();
 
 export const initialRouter = (app: Application) => {

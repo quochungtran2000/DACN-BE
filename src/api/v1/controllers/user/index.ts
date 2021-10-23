@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { createQueryBuilder, getRepository } from 'typeorm';
-import { User } from '../../entity/user.entity';
+import { User } from '../../entities/user.entity';
 // import db from '../../utils/dbConfig';
 
 export const test = async (req: Request, res: Response, next: NextFunction) => {

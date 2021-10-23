@@ -1,7 +1,11 @@
 import dotenv from 'dotenv';
-import { getEnv } from './helpers';
 dotenv.config();
 
+export function getEnv(key: string) {
+  return process.env[key] || '';
+}
+
+export const isProduction = getEnv('NODE_ENV') === 'production' || false;
 export const PORT = getEnv('PORT');
 export const DB_PG_HOST = getEnv('DB_PG_HOST');
 export const DB_PG_USERNAME = getEnv('DB_PG_USERNAME');

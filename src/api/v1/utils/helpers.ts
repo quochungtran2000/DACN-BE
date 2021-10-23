@@ -1,9 +1,8 @@
 import sgMail from '@sendgrid/mail';
-import { SENDGRID_API_KEY, SENDGRID_EMAIL_ADDRESS } from './constant';
-
-export function getEnv(key: string) {
-  return process.env[key] || '';
-}
+import {
+  SENDGRID_API_KEY,
+  SENDGRID_EMAIL_ADDRESS,
+} from '../../../config/constant';
 
 export const sendEmail = async (
   email: string,

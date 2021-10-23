@@ -1,5 +1,5 @@
 import { ConnectionOptions } from 'typeorm';
-import { User } from '../entity/user.entity';
+import { User } from '../api/v1/entities/user.entity';
 import {
   DB_PG_HOST,
   DB_PG_PORT,

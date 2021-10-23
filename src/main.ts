@@ -1,19 +1,32 @@
 import express, { Application } from 'express';
-import { swaggerMiddleware } from './middleware/swaggerStats';
+import { swaggerMiddleware } from './api/v1/middlewares/swaggerStats';
 import bodyParser from 'body-parser';
-// import { errorHandler, notFoundError } from './middleware/errorHandler';
-import { initialRouter } from './route';
+import path from 'path';
+import fs from 'fs';
+import { initialRouter } from './api/v1/routes';
 import { createConnection } from 'typeorm';
-import { dbConfig } from './utils/dbConfig';
+import { dbConfig } from './config/dbConfig';
+import morgan from 'morgan';
+import { isProduction } from './config/constant';
 const app: Application = express();
 
 const PORT = 1234;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(swaggerMiddleware);
 
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
+  flags: 'a',
+});
+
+if (!isProduction) {
+  app.use(morgan('dev'));
+}
+
+if (isProduction) {
+  app.use(morgan('common', { stream: accessLogStream }));
+}
+
 initialRouter(app);
-// app.use(notFoundError);
-// app.use(errorHandler);
 
 createConnection(dbConfig)
   .then((db) => {
