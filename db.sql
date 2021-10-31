@@ -63,8 +63,8 @@ create table partner (
 	fullname character varying ,
 	email character varying not null unique,
 	phone character varying not null unique,
-	create_date timestamp,
-	update_date timestamp
+	create_date timestamp default now(),
+	update_date timestamp default now()
 );
 
 alter table partner add constraint PK_PARTNER_ID primary key (id);
@@ -96,8 +96,8 @@ create table post_request (
 	title character varying not null,
 	partner_id integer not null,
 	content text,
-	create_date timestamp,
-	update_date timestamp
+	create_date timestamp default now(),
+	update_date timestamp default now()
 );
 
 alter table post_request add constraint PK_POST_REQUEST_ID primary key (id);

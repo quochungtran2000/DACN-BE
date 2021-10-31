@@ -3,10 +3,12 @@ import { redirectToDashboard } from '../controllers';
 import { test } from '../controllers/user';
 const router = Router();
 
-export const initialRouter = (app: Application) => {
+export const initialRouterVersion1 = (app: Application) => {
   router.get('/dashboard', redirectToDashboard);
 
-  router.get('/ping');
+  router.get('/', (req, res) => {
+    res.send('hello');
+  });
 
   router.get('/user', test);
 
