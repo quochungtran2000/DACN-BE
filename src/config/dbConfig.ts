@@ -1,5 +1,14 @@
 import { ConnectionOptions } from 'typeorm';
-import { User } from '../api/v1/entities/user.entity';
+import {
+  City,
+  District,
+  Job,
+  Partner,
+  PartnerRole,
+  PostRequest,
+  Role,
+  Ward,
+} from '../api/v1/entities';
 import {
   DB_PG_HOST,
   DB_PG_PORT,
@@ -15,5 +24,14 @@ export const dbConfig: ConnectionOptions = {
   username: DB_PG_USERNAME,
   password: DB_PG_PASSWORD,
   database: DB_PG_NAME,
-  entities: [User],
+  entities: [
+    City,
+    District,
+    Ward,
+    Role,
+    PartnerRole,
+    Partner,
+    Job,
+    PostRequest,
+  ],
 };
