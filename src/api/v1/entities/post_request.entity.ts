@@ -6,14 +6,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToOne,
   PrimaryColumn,
 } from 'typeorm';
 import { IPostRequest } from '../interfaces';
-import { City } from './city.entity';
-import { District } from './district.entity';
 import { Partner } from './partner.entity';
-import { Ward } from './ward.entity';
 
 @Entity({ name: 'post_request' })
 export class PostRequest extends BaseEntity implements IPostRequest {
@@ -38,18 +34,6 @@ export class PostRequest extends BaseEntity implements IPostRequest {
   @ManyToOne(() => Partner, (partner) => partner.post_requests)
   @JoinColumn({ name: 'partner_id', referencedColumnName: 'id' })
   author!: Partner;
-
-  @OneToOne(() => Ward, (ward) => ward.post_request)
-  @JoinColumn({ name: 'ward_id', referencedColumnName: 'id' })
-  ward!: Ward;
-
-  @OneToOne(() => District, (district) => district.post_request)
-  @JoinColumn({ name: 'district_id', referencedColumnName: 'id' })
-  district!: District;
-
-  @OneToOne(() => City, (city) => city.post_request)
-  @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
-  city!: City;
 
   @BeforeInsert()
   initialDate() {
