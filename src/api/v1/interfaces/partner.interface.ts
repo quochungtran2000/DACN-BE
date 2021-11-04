@@ -1,10 +1,13 @@
-export interface IPartner {
+import { IBaseDateTime } from '.';
+
+export interface IPartner extends ICreatePartner, IBaseDateTime {
   id: number;
+}
+
+export interface ICreatePartner {
   username: string;
   password: string;
   fullname: string;
   email: string;
   phone: string;
-  create_date: Date;
-  update_date: Date;
 }
