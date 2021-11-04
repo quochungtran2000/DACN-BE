@@ -1,5 +1,5 @@
-import bodyParser from 'body-parser';
-import { Application } from 'express';
+// import bodyParser from 'body-parser';
+import Express, { Application } from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import fs from 'fs';
@@ -7,7 +7,8 @@ import { swaggerMiddleware } from '../api/v1/middlewares/swaggerStats';
 import { isProduction } from './constant';
 
 const applyMiddleWare = (app: Application) => {
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(Express.urlencoded({ extended: false }));
+  app.use(Express.json());
   app.use(swaggerMiddleware);
 
   if (!isProduction) {

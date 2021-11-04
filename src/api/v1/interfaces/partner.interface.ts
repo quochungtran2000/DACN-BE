@@ -1,4 +1,5 @@
 import { IBaseDateTime } from '.';
+import { UserRole } from '../validations';
 
 export interface IPartner extends ICreatePartner, IBaseDateTime {
   id: number;
