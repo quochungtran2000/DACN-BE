@@ -4,8 +4,6 @@ import { ping, redirectToDashboard } from '../controllers';
 const router = Router();
 
 export const initialRouterVersion1 = (app: Application) => {
-  router.get('/dashboard', redirectToDashboard);
-
   router.get('/', (req, res) => {
     res.send(
       `Welcome to doan chuyen nganh api ${isProduction ? 'production' : 'dev'}`
