@@ -1,6 +1,6 @@
 import { Application, Router } from 'express';
 import { isProduction } from '../../../config/constant';
-import { ping, redirectToDashboard } from '../controllers';
+import { AuthController, UserController, ping } from '../controllers';
 const router = Router();
 
 export const initialRouterVersion1 = (app: Application) => {
@@ -10,6 +10,10 @@ export const initialRouterVersion1 = (app: Application) => {
     );
   });
 
+  //user route
+  router.post('/register', AuthController.register);
+  router.post('/login', AuthController.login);
+  router.get('/me', UserController.me);
   router.get('/ping', ping);
 
   //  Auth Router
