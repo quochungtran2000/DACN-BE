@@ -3,3 +3,7 @@ export interface IResponse {
   message: string;
   statusCode: number;
 }
+
+export interface IAuthResponse {
+  token: string;
+}

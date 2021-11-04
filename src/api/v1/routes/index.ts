@@ -10,17 +10,13 @@ export const initialRouterVersion1 = (app: Application) => {
     );
   });
 
-  //user route
-  router.post('/register', AuthController.register);
-  router.post('/login', AuthController.login);
-  router.get('/me', UserController.me);
   router.get('/ping', ping);
 
   //  Auth Router
 
-  router.post('/auth/login', ping);
-  router.post('/auth/register', ping);
-  router.post('/auth/me', ping);
+  router.post('/auth/login', AuthController.login);
+  router.post('/auth/register', AuthController.register);
+  router.post('/auth/me', UserController.me);
 
   // User router
 

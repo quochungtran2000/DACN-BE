@@ -6,6 +6,7 @@ import {
   SENDGRID_EMAIL_ADDRESS,
   USER_SECRET,
 } from '../../../config/constant';
+import { Partner } from '../entities';
 
 export const sendEmail = async (
   email: string,
@@ -30,12 +31,16 @@ export const sendEmail = async (
   }
 };
 
-export const generatorToken = async (user: any) => {
-  let token = await jwt.sign({ userId: user.id }, USER_SECRET, {
-    algorithm: 'HS256',
-    subject: `${user.id}`,
-    expiresIn: '7d',
-  });
+export const generatorToken = async (user: Partner) => {
+  let token = await jwt.sign(
+    { userId: user.id, role: (user as any).role || 'user' },
+    USER_SECRET,
+    {
+      algorithm: 'HS256',
+      subject: `${user.id}`,
+      expiresIn: '7d',
+    }
+  );
   token = `Bearer ${token}`;
   return token;
 };

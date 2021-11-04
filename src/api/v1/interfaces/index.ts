@@ -13,3 +13,5 @@ export * from './subcriber.interface';
 
 export * from './application.interface';
 export * from './base.interface';
+
+export * from './auth.interface';
