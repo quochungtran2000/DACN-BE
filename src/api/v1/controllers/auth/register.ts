@@ -25,8 +25,6 @@ const register = async (req: Request, res: Response) => {
           fullname: userData.fullname,
           email: userData.email,
           phone: userData.phone,
-          create_date: new Date(),
-          update_date: new Date(),
         })
         .returning('id')
         .execute();

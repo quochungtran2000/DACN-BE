@@ -12,3 +12,4 @@ export * from './comment.interface';
 export * from './subcriber.interface';
 
 export * from './application.interface';
+export * from './base.interface';

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/main.ts",
-    "start": "npm run build &&  node ./build/main.js",
+    "start": "node ./build/main.js",
     "tslint": "tslint --project tsconfig.json",
     "build": "tsc",
     "prepare": "husky install",

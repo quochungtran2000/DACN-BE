@@ -13,7 +13,5 @@ export const ping = (
   res: Response,
   next: NextFunction
 ): Response => {
-  return res
-    .status(200)
-    .json({ code: 200, status: 'success', message: 'ping' });
+  return res.status(200).json({ statusCode: 200, message: 'ping' });
 };
