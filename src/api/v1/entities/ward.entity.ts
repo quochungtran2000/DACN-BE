@@ -23,7 +23,7 @@ export class Ward extends BaseEntity implements IWard {
   district_id!: number;
 
   @ManyToOne(() => District, (district) => district.wards)
-  @JoinColumn({ name: 'id', referencedColumnName: 'district_id' })
+  @JoinColumn({ name: 'district_id', referencedColumnName: 'id' })
   district!: District;
 
   @OneToOne(() => Job, (job) => job.ward)
