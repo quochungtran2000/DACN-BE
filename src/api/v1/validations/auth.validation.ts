@@ -6,7 +6,7 @@ export const loginValidation = Joi.object({
 });
 
 export const changePasswordValidation = Joi.object({
-  old_password: Joi.string().required().min(6),
-  new_password: Joi.string().required().min(6),
-  confirm_password: Joi.string().required().min(6),
+  old_password: Joi.string().required(),
+  new_password: Joi.string().required(),
+  confirm_password: Joi.string().required(),
 });
