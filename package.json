@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/main.ts",
-    "start": "npm run build && node ./build/app.js",
+    "start": "npm run build &&  node ./build/main.js",
     "tslint": "tslint --project tsconfig.json",
     "build": "tsc",
     "prepare": "husky install",
@@ -18,6 +18,8 @@
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.4.7",
+    "@types/body-parser": "^1.19.1",
+    "@types/node": "^16.11.6",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",

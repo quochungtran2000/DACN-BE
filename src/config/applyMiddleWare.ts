@@ -16,7 +16,7 @@ const applyMiddleWare = (app: Application) => {
 
   if (isProduction) {
     var accessLogStream = fs.createWriteStream(
-      path.join(__dirname, './api/v1/access.log'),
+      path.join(__dirname, 'access.log'),
       {
         flags: 'a',
       }
