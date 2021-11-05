@@ -29,7 +29,7 @@ const getWards = async (req: Request<any, any, IWard, any>, res: Response) => {
       .andWhere('ds.city_id =:city_id', { city_id: city_id })
       .take(page_size)
       .skip(skip)
-      .getManyAndCount();
+      .getManyAndCount(); ///
 
     return res
       .status(200)
