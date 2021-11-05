@@ -18,6 +18,7 @@ export const initialRouterVersion1 = (app: Application) => {
       `<h3 style="text-align:center;margin-top:2rem;">API ĐỒ ÁN CHUYÊN NGÀNH MÔI TRƯỜNG <b>${
         isProduction ? 'PRODUCTION' : 'DEV'
       }</b></h3>
+      <div style="text-align:center;"><a style="text-decoration: none;" href="/api/v1/dashboard">DashBoard</a></div>
       <hr/>
       <h3>Messenger Facebook Router</h3>
       <ul>
@@ -94,7 +95,7 @@ export const initialRouterVersion1 = (app: Application) => {
 
   router.post('/auth/login', AuthController.login);
   router.post('/auth/register', AuthController.register);
-  router.post('/auth/me', AuthController.me);
+  router.get('/auth/me', AuthController.me);
   router.post('/auth/forgot-password', AuthController.forgotPassword);
 
   // User router
@@ -117,7 +118,7 @@ export const initialRouterVersion1 = (app: Application) => {
 
   router.get('/post', PostController.getPosts);
   router.get('/post/:id', PostController.getPost);
-  router.post('/post/:id', PostController.createPost);
+  router.post('/post/', PostController.createPost);
   router.put('/post/:id', PostController.updatePost);
   router.delete('/post/:id', PostController.deletePost);
 

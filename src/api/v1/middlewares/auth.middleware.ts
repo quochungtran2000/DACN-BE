@@ -1,6 +1,6 @@
 import { USER_SECRET } from '../../../config/constant';
 
-const jwt = require('jwt');
+const jwt = require('jsonwebtoken');
 
 const auth = async (req: any, res: any, next: any): Promise<any> => {
   try {
@@ -8,15 +8,18 @@ const auth = async (req: any, res: any, next: any): Promise<any> => {
     let token = req.headers['authorization'] || req.query.token;
     token = token.split(' ')[1];
     if (!token) {
-      return res.status(401).send({ code: 401, message: 'Unauthorized' });
+      console.log('not token');
+      return next();
     }
+
+    console.log('not token');
     const user = jwt.verify(token, USER_SECRET);
-    console.log(`decode token`, user);
     req.user = user;
+    return next();
   } catch (err) {
-    return res.status(401).send({ code: 401, message: 'Unauthorized' });
+    // return res.status(401).send({ code: 401, message: 'Unauthorized' });
+    return next();
   }
-  return next();
 };
 
 export default auth;
