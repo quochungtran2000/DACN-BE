@@ -5,11 +5,13 @@ import path from 'path';
 import fs from 'fs';
 import { swaggerMiddleware } from '../api/v1/middlewares/swaggerStats';
 import { isProduction } from './constant';
+import auth from '../api/v1/middlewares/auth.middleware';
 
 const applyMiddleWare = (app: Application) => {
   app.use(Express.urlencoded({ extended: false }));
   app.use(Express.json());
   app.use(swaggerMiddleware);
+  app.use(auth);
 
   if (!isProduction) {
     app.use(morgan('dev'));
