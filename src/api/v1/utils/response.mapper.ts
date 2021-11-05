@@ -1,4 +1,5 @@
 import { City, District, Job, Partner, PostRequest, Ward } from '../entities';
+import { Post } from '../entities/post.entity';
 import {
   ICity,
   IDistrict,
@@ -8,6 +9,7 @@ import {
   IPublicPostRequest,
   IWard,
 } from '../interfaces';
+import { IPublicPost } from '../interfaces/post.interface';
 
 export const mappingPartner = (data: Partner): IPublicPartner => {
   return {
@@ -107,4 +109,21 @@ export const mappingWard = (data: Ward): IWard => {
 
 export const mappingWards = (data: Ward[]): IWard[] => {
   return data.map((item) => mappingWard(item));
+};
+
+export const mappingPost = (data: Post): IPublicPost => {
+  return {
+    id: data.id,
+    title: data.title,
+    content: data.content,
+    image_url: data.image_url,
+    slug: data.slug,
+    author: mappingPartner(data.author),
+    create_date: data.create_date,
+    update_date: data.update_date,
+  };
+};
+
+export const mappingPosts = (data: Post[]): IPublicPost[] => {
+  return data.map((item) => mappingPost(item));
 };

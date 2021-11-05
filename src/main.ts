@@ -14,6 +14,9 @@ initialRouterVersion1(app);
 
 createConnection(dbConfig)
   .then((db) => {
+    app.get('/', (req, res) => {
+      res.redirect('/api/v1');
+    });
     app.listen(PORT, () =>
       console.log(`App listenning on http://localhost:${PORT}/api/v1`)
     );

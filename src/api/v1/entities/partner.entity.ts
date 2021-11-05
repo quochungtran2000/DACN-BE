@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { Job, PartnerRole } from '.';
 import { IPartner } from '../interfaces';
+import { Post } from './post.entity';
 import { PostRequest } from './post_request.entity';
 
 @Entity({ name: 'partner' })
@@ -49,6 +50,10 @@ export class Partner extends BaseEntity implements IPartner {
   @OneToMany(() => Job, (job) => job.author)
   @JoinColumn({ name: 'id', referencedColumnName: 'author_id' })
   jobs!: Job;
+
+  @OneToMany(() => Post, (post) => post.author)
+  @JoinColumn({ name: 'id', referencedColumnName: 'author_id' })
+  posts!: Post;
 
   @BeforeInsert()
   initialDate() {
