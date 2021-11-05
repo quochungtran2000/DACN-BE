@@ -10,6 +10,7 @@ import {
   PostRequestController,
   UserController,
 } from '../controllers';
+import webhookConntroller from '../controllers/webhook';
 import { roleHr } from '../middlewares/roleHr.middleware';
 const router = Router();
 
@@ -153,6 +154,12 @@ export const initialRouterVersion1 = (app: Application) => {
   router.post('/post-request', roleHr, PostRequestController.createPostRequest);
   router.put('/post-request/:id', PostRequestController.upadtePostRequest);
   router.delete('/post-request/:id', PostRequestController.deletePostRequest);
+
+  // Webhook
+
+  router.post('/message-profile', webhookConntroller.messageProfile);
+  router.get('/webhook', webhookConntroller.getWebhook);
+  router.post('/webhook', webhookConntroller.postWebhook);
 
   return app.use(`/api/v1`, router);
 };
