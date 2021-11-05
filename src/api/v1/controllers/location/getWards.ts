@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { District, Ward } from '../../entities';
 import { IWard } from '../../interfaces';
+import { mappingWard, mappingWards } from '../../utils/response.mapper';
 import { PagingQueryValidation } from '../../validations';
 
 const getWards = async (req: Request<any, any, IWard, any>, res: Response) => {
@@ -33,7 +34,7 @@ const getWards = async (req: Request<any, any, IWard, any>, res: Response) => {
 
     return res
       .status(200)
-      .json({ total: total, data: data, current_page: page });
+      .json({ total: total, data: mappingWards(data), current_page: page });
   } catch (error: any) {
     console.log(error);
     return res.status(400).json({ message: error.message });

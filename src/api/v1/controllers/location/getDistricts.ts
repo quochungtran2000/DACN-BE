@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { District } from '../../entities';
 import { IDistrict } from '../../interfaces';
+import { mappingDistricts } from '../../utils/response.mapper';
 import { PagingQueryValidation } from '../../validations';
 
 const getDistricts = async (
@@ -34,7 +35,7 @@ const getDistricts = async (
 
     return res
       .status(200)
-      .json({ total: total, data: data, current_page: page });
+      .json({ total: total, data: mappingDistricts(data), current_page: page });
   } catch (error: any) {
     console.log(error);
     return res.status(400).json({ message: error.message });

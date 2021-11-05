@@ -12,3 +12,6 @@ export const DB_PG_PORT = getEnv('DB_PG_PORT');
 export const USER_SECRET = 'hung12341234';
 export const SENDGRID_API_KEY = getEnv('SENDGRID_API_KEY');
 export const SENDGRID_EMAIL_ADDRESS = 'tranquochung6810@gmail.com';
+export const VERIFY_TOKEN = getEnv('VERIFY_TOKEN');
+export const PAGE_ACCESS_TOKEN = getEnv('PAGE_ACCESS_TOKEN');
+export const FB_API = 'https://graph.facebook.com';
