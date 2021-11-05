@@ -1,8 +1,17 @@
-export interface IPostRequest {
+import { IBaseDateTime, IPublicPartner } from '.';
+
+export interface IPostRequest extends IBasePostRequest, IBaseDateTime {
   id: number;
-  title: string;
   partner_id: number;
+}
+
+export interface ICreatePostRequest extends IBasePostRequest {}
+
+export interface IBasePostRequest {
+  title: string;
   content: string;
-  create_date: Date;
-  update_date: Date;
+}
+
+export interface IPublicPostRequest extends IPostRequest {
+  author: IPublicPartner;
 }
