@@ -6,3 +6,4 @@ export * from './post';
 export * from './comment';
 export * from './career';
 export * from './post-request';
+export * from './webhook';
