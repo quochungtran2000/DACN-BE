@@ -5,9 +5,11 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Partner } from '.';
 import { IJob } from '../interfaces';
 import { City } from './city.entity';
 import { District } from './district.entity';
@@ -71,6 +73,10 @@ export class Job extends BaseEntity implements IJob {
   @OneToOne(() => City, (city) => city.job)
   @JoinColumn({ name: 'city_id', referencedColumnName: 'id' })
   city!: City;
+
+  @ManyToOne(() => Partner, (partner) => partner.jobs)
+  @JoinColumn({ name: 'author_id', referencedColumnName: 'id' })
+  author!: City;
 
   @BeforeInsert()
   initialDate() {

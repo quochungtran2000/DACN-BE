@@ -8,7 +8,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { PartnerRole } from '.';
+import { Job, PartnerRole } from '.';
 import { IPartner } from '../interfaces';
 import { PostRequest } from './post_request.entity';
 
@@ -45,6 +45,10 @@ export class Partner extends BaseEntity implements IPartner {
   @OneToMany(() => PartnerRole, (pr) => pr.partner)
   @JoinColumn({ name: 'id', referencedColumnName: 'partner_id' })
   partner_role!: PartnerRole;
+
+  @OneToMany(() => Job, (job) => job.author)
+  @JoinColumn({ name: 'id', referencedColumnName: 'author_id' })
+  jobs!: Job;
 
   @BeforeInsert()
   initialDate() {

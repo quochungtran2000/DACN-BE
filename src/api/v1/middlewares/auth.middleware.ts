@@ -12,8 +12,8 @@ const auth = async (req: any, res: any, next: any): Promise<any> => {
       return next();
     }
 
-    console.log('not token');
     const user = jwt.verify(token, USER_SECRET);
+    console.log(user);
     req.user = user;
     return next();
   } catch (err) {

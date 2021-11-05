@@ -10,6 +10,7 @@ import {
   PostRequestController,
   UserController,
 } from '../controllers';
+import { roleHr } from '../middlewares/roleHr.middleware';
 const router = Router();
 
 export const initialRouterVersion1 = (app: Application) => {
@@ -149,7 +150,7 @@ export const initialRouterVersion1 = (app: Application) => {
 
   router.get('/post-request', PostRequestController.getPostRequests);
   router.get('/post-request/:id', PostRequestController.getPostRequest);
-  router.post('/post-request', PostRequestController.createPostRequest);
+  router.post('/post-request', roleHr, PostRequestController.createPostRequest);
   router.put('/post-request/:id', PostRequestController.upadtePostRequest);
   router.delete('/post-request/:id', PostRequestController.deletePostRequest);
 
