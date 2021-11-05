@@ -9,6 +9,7 @@ import {
   Role,
   Ward,
 } from '../api/v1/entities';
+import { Post } from '../api/v1/entities/post.entity';
 import {
   DB_PG_HOST,
   DB_PG_PORT,
@@ -33,5 +34,6 @@ export const dbConfig: ConnectionOptions = {
     Partner,
     Job,
     PostRequest,
+    Post,
   ],
 };

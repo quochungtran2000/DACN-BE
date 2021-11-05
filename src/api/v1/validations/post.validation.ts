@@ -1,3 +1,7 @@
 import Joi from 'joi';
 
-export const basepostValidation = Joi.object({});
+export const createPostValidation = Joi.object({
+  title: Joi.string().required(),
+  content: Joi.string().required(),
+  image_url: Joi.string().required(),
+});
