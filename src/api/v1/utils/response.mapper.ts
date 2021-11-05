@@ -1,8 +1,10 @@
 import { City, District, Job, Partner, PostRequest, Ward } from '../entities';
+import { Comment } from '../entities/comment.entity';
 import { Post } from '../entities/post.entity';
 import {
   ICity,
   IDistrict,
+  IPublicComment,
   IPublicJob,
   IPublicLocation,
   IPublicPartner,
@@ -126,4 +128,19 @@ export const mappingPost = (data: Post): IPublicPost => {
 
 export const mappingPosts = (data: Post[]): IPublicPost[] => {
   return data.map((item) => mappingPost(item));
+};
+
+export const mappingComment = (data: Comment): IPublicComment => {
+  return {
+    id: data.id,
+    comment: data.comment,
+    author_id: data.author.id,
+    author_name: data.author.fullname,
+    create_date: data.create_date,
+    update_date: data.update_date,
+  };
+};
+
+export const mappingComments = (data: Comment[]): IPublicComment[] => {
+  return data.map((item) => mappingComment(item));
 };

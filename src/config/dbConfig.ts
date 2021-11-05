@@ -9,6 +9,7 @@ import {
   Role,
   Ward,
 } from '../api/v1/entities';
+import { Comment } from '../api/v1/entities/comment.entity';
 import { Post } from '../api/v1/entities/post.entity';
 import {
   DB_PG_HOST,
@@ -35,5 +36,6 @@ export const dbConfig: ConnectionOptions = {
     Job,
     PostRequest,
     Post,
+    Comment,
   ],
 };
