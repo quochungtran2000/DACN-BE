@@ -7,8 +7,10 @@ import {
   JoinColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from 'typeorm';
 import { IPost } from '../interfaces/post.interface';
+import { Comment } from './comment.entity';
 import { Partner } from './partner.entity';
 
 @Entity({ name: 'post' })
@@ -49,6 +51,10 @@ export class Post extends BaseEntity implements IPost {
   @ManyToOne(() => Partner, (partner) => partner.posts)
   @JoinColumn({ name: 'author_id', referencedColumnName: 'id' })
   author!: Partner;
+
+  @OneToMany(() => Comment, (comment) => comment.post)
+  @JoinColumn({ name: 'id', referencedColumnName: 'partner_id' })
+  comments!: Comment;
 
   @BeforeInsert()
   initialDate() {
