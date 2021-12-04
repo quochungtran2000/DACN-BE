@@ -9,6 +9,7 @@ import {
   Role,
   Ward,
 } from '../api/v1/entities';
+import { Category } from '../api/v1/entities/category.entity';
 import { Comment } from '../api/v1/entities/comment.entity';
 import { Post } from '../api/v1/entities/post.entity';
 import {
@@ -37,5 +38,6 @@ export const dbConfig: ConnectionOptions = {
     PostRequest,
     Post,
     Comment,
+    Category,
   ],
 };

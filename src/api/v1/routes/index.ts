@@ -10,6 +10,7 @@ import {
   PostRequestController,
   UserController,
 } from '../controllers';
+import { categoryController } from '../controllers/category';
 import webhookConntroller from '../controllers/webhook';
 import { roleHr } from '../middlewares/roleHr.middleware';
 const router = Router();
@@ -160,6 +161,13 @@ export const initialRouterVersion1 = (app: Application) => {
   router.post('/message-profile', webhookConntroller.messageProfile);
   router.get('/webhook', webhookConntroller.getWebhook);
   router.post('/webhook', webhookConntroller.postWebhook);
+
+  // category
+  router.get('/categories', categoryController.getCategories);
+  router.get('/category/:id', categoryController.getCategory);
+  router.post('/category', categoryController.createCategory);
+  router.put('/category/:id', categoryController.updateCategory);
+  router.delete('/category', categoryController.deleteCategory);
 
   return app.use(`/api/v1`, router);
 };
