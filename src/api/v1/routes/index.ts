@@ -120,7 +120,7 @@ export const initialRouterVersion1 = (app: Application) => {
 
   router.get('/post', PostController.getPosts);
   router.get('/post/:id', PostController.getPost);
-  router.post('/post/', PostController.createPost);
+  router.post('/post', PostController.createPost);
   router.put('/post/:id', PostController.updatePost);
   router.delete('/post/:id', PostController.deletePost);
 

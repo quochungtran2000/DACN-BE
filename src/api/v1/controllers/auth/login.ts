@@ -22,22 +22,28 @@ const login = async (
       .setParameters({ username })
       .getOne();
 
-    if (!user) return res.status(404).json({ message: 'USER NOT FOUND' });
+    console.log(`user`, user);
+    if (!user)
+      return res
+        .status(401)
+        .json({ message: 'username or password incorrect' });
 
-    const { password: hashPassword, ...dataUser } = user;
+    const { password: hashPassword, partner_role, ...dataUser } = user;
+
+    console.log(dataUser);
 
     const matchPassword = await comparePassword(hashPassword, password);
 
     if (!matchPassword)
-      return res.status(400).json({ message: 'wrong password!' });
+      return res.status(400).json({ status: 401, message: 'wrong password!' });
 
     const role = (user as any)?.partner_role[0]?.role?.role;
 
-    const token = await generatorToken({ ...user, role: role } as any);
+    const token = await generatorToken({ ...dataUser, role: role } as any);
     res.status(200).json({ token: token });
   } catch (error: any) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 

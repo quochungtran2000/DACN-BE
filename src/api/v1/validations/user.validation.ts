@@ -15,7 +15,7 @@ export enum Role {
 export const basePartnerValidate = Joi.object({
   username: Joi.string().required(),
   password: Joi.string().required(),
-  email: Joi.string().required(),
+  email: Joi.string().required().email(),
   phone: Joi.string().required(),
   fullname: Joi.string().required(),
 });
