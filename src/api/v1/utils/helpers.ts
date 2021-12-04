@@ -33,12 +33,12 @@ export const sendEmail = async (
 
 export const generatorToken = async (user: Partner) => {
   let token = await jwt.sign(
-    { userId: user.id, role: (user as any).role || 'user' },
+    { userId: user.id, role: (user as any).role || 'user', ...user },
     USER_SECRET,
     {
       algorithm: 'HS256',
       subject: `${user.id}`,
-      expiresIn: '7d',
+      expiresIn: '1d',
     }
   );
   token = `Bearer ${token}`;
