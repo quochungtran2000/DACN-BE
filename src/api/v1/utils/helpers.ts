@@ -1,4 +1,5 @@
 import sgMail from '@sendgrid/mail';
+import { createQueryBuilder } from 'typeorm';
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 import {
@@ -7,6 +8,8 @@ import {
   USER_SECRET,
 } from '../../../config/constant';
 import { Partner } from '../entities';
+import { PostCategory } from '../entities/post_category.entity';
+import { PostTag } from '../entities/post_tag.entity';
 
 export const sendEmail = async (
   email: string,
@@ -57,3 +60,19 @@ export async function comparePassword(
 ) {
   return await bcrypt.compare(password2, hashedPassword);
 }
+
+export const beforeUpdatePost = (id: number): Promise<any> => {
+  const postCategory = createQueryBuilder()
+    .delete()
+    .from(PostCategory)
+    .where('post_id = :id', { id: id })
+    .execute();
+
+  const postTag = createQueryBuilder()
+    .delete()
+    .from(PostTag)
+    .where('post_id = :id', { id: id })
+    .execute();
+
+  return Promise.all([postCategory, postTag]);
+};

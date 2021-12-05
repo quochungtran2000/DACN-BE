@@ -11,6 +11,7 @@ import {
   UserController,
 } from '../controllers';
 import { categoryController } from '../controllers/category';
+import { tagController } from '../controllers/tag';
 import webhookConntroller from '../controllers/webhook';
 import { roleHr } from '../middlewares/roleHr.middleware';
 const router = Router();
@@ -168,6 +169,13 @@ export const initialRouterVersion1 = (app: Application) => {
   router.post('/category', categoryController.createCategory);
   router.put('/category/:id', categoryController.updateCategory);
   router.delete('/category', categoryController.deleteCategory);
+
+  //Tag
+  router.get('/tags', tagController.getTags);
+  router.get('/tag/:id', tagController.getTag);
+  router.post('/tag', tagController.createTag);
+  router.put('/tag/:id', tagController.updateTag);
+  router.delete('/tag', tagController.deleteTag);
 
   return app.use(`/api/v1`, router);
 };

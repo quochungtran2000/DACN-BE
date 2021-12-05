@@ -1,17 +1,22 @@
 import { City, District, Job, Partner, PostRequest, Ward } from '../entities';
+import { Category } from '../entities/category.entity';
 import { Comment } from '../entities/comment.entity';
 import { Post } from '../entities/post.entity';
+import { PostCategory } from '../entities/post_category.entity';
+import { Tag } from '../entities/tag.entity';
 import {
   ICity,
   IDistrict,
+  IPublicCategory,
   IPublicComment,
   IPublicJob,
   IPublicLocation,
   IPublicPartner,
   IPublicPostRequest,
+  IPublicTag,
   IWard,
 } from '../interfaces';
-import { IPublicPost } from '../interfaces/post.interface';
+import { ICategoryPost, IPublicPost } from '../interfaces/post.interface';
 
 export const mappingPartner = (data: Partner): IPublicPartner => {
   return {
@@ -24,6 +29,21 @@ export const mappingPartner = (data: Partner): IPublicPartner => {
     update_date: data.update_date,
   };
 };
+
+// export const mappingCategory = (data: PostCategory): ICategoryPost => {
+//     return {
+//       category_id: data.category_id,
+//       title: data.category.title,
+//     };
+// };
+
+// export const mappingTag = (data: Tag): IPublicTag => {
+//   return {
+//     id: data.id,
+//     title: data.title,
+//     slug: data.slug
+//   };
+// }
 
 export const mappingPostRequest = (data: PostRequest): IPublicPostRequest => {
   return {

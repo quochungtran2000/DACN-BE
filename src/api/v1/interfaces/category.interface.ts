@@ -6,3 +6,9 @@ export interface ICategory {
   create_date: Date;
   update_date: Date;
 }
+
+export interface IPublicCategory {
+  id: number;
+  title: string;
+  slug: string;
+}

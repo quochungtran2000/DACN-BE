@@ -12,6 +12,9 @@ import {
 import { Category } from '../api/v1/entities/category.entity';
 import { Comment } from '../api/v1/entities/comment.entity';
 import { Post } from '../api/v1/entities/post.entity';
+import { PostCategory } from '../api/v1/entities/post_category.entity';
+import { PostTag } from '../api/v1/entities/post_tag.entity';
+import { Tag } from '../api/v1/entities/tag.entity';
 import {
   DB_PG_HOST,
   DB_PG_PORT,
@@ -39,5 +42,8 @@ export const dbConfig: ConnectionOptions = {
     Post,
     Comment,
     Category,
+    PostCategory,
+    Tag,
+    PostTag,
   ],
 };
