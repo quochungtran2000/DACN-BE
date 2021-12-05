@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import { createQueryBuilder, getRepository } from 'typeorm';
 import { Post } from '../../entities/post.entity';
+import { PostCategory } from '../../entities/post_category.entity';
+import { PostTag } from '../../entities/post_tag.entity';
 import { ICreatePost } from '../../interfaces/post.interface';
+import { beforeUpdatePost } from '../../utils/helpers';
 import { createPostValidation } from '../../validations';
 
 const updatePost = async (
@@ -26,6 +29,8 @@ const updatePost = async (
     if (myJob.author_id !== userId)
       return res.status(400).json({ message: 'You dont have permission' });
 
+    await beforeUpdatePost(postId);
+
     await createQueryBuilder()
       .update(Post)
       .set({
@@ -39,6 +44,28 @@ const updatePost = async (
       .andWhere('id = :postId ')
       .setParameters({ userId: userId, postId: postId })
       .execute();
+
+    const valuesCategory = data.categories.map((item: any) => {
+      return { post_id: myJob.id, category_id: item };
+    });
+
+    const valuesTag = data.tags.map((item: any) => {
+      return { post_id: myJob.id, tag_id: item };
+    });
+
+    const createPostCategory = createQueryBuilder()
+      .insert()
+      .into(PostCategory)
+      .values(valuesCategory)
+      .execute();
+
+    const createPostTag = createQueryBuilder()
+      .insert()
+      .into(PostTag)
+      .values(valuesTag)
+      .execute();
+
+    Promise.all([createPostCategory, createPostTag]);
 
     return res.status(200).json({ message: 'Update Post Successful!' });
   } catch (error: any) {

@@ -1,4 +1,13 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Post } from './post.entity';
+import { PostCategory } from './post_category.entity';
 
 @Entity({ name: 'category' })
 export class Category extends BaseEntity {
@@ -19,4 +28,8 @@ export class Category extends BaseEntity {
 
   @Column({ name: 'update_date', type: Date })
   update_date!: Date;
+
+  @OneToMany(() => PostCategory, (postCategory) => postCategory.category)
+  @JoinColumn({ name: 'id', referencedColumnName: 'category_id' })
+  postCategory!: PostCategory;
 }

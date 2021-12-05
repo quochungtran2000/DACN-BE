@@ -12,6 +12,8 @@ import {
 import { IPost } from '../interfaces/post.interface';
 import { Comment } from './comment.entity';
 import { Partner } from './partner.entity';
+import { PostCategory } from './post_category.entity';
+import { PostTag } from './post_tag.entity';
 
 @Entity({ name: 'post' })
 export class Post extends BaseEntity implements IPost {
@@ -55,6 +57,14 @@ export class Post extends BaseEntity implements IPost {
   @OneToMany(() => Comment, (comment) => comment.post)
   @JoinColumn({ name: 'id', referencedColumnName: 'partner_id' })
   comments!: Comment;
+
+  @OneToMany(() => PostCategory, (postCategory) => postCategory.post)
+  @JoinColumn({ name: 'id', referencedColumnName: 'post_id' })
+  postCategory!: PostCategory;
+
+  @OneToMany(() => PostTag, (postTag) => postTag.post)
+  @JoinColumn({ name: 'id', referencedColumnName: 'post_id' })
+  postTag!: PostTag;
 
   @BeforeInsert()
   initialDate() {
