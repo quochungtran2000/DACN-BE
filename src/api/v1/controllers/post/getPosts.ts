@@ -4,6 +4,9 @@ import { Post } from '../../entities/post.entity';
 import { mappingPosts } from '../../utils/response.mapper';
 
 const getPosts = async (req: Request, res: Response) => {
+  const page = Number(req.query?.page) || 1;
+  const size = Number(req.query?.page_size) || 12;
+
   try {
     const [data, total] = await getRepository(Post)
       .createQueryBuilder('pq')
@@ -12,9 +15,10 @@ const getPosts = async (req: Request, res: Response) => {
       .leftJoinAndSelect('pc.category', 'category')
       .leftJoinAndSelect('pq.postTag', 'pt')
       .leftJoinAndSelect('pt.tag', 'tag')
+      .take(size)
+      .skip((page - 1) * size)
+      .orderBy('pq.create_date', 'DESC')
       .getManyAndCount();
-
-    console.log(data);
 
     res.status(200).json({ total, data });
   } catch (error: any) {

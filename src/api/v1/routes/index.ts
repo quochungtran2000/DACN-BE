@@ -115,6 +115,8 @@ export const initialRouterVersion1 = (app: Application) => {
   //  Location Router
 
   router.get('/location/city', LocationController.getCities);
+  router.get('/location/districts', LocationController.districts);
+  router.get('/location/wards', LocationController.wards);
   router.get('/location/:cityId/district', LocationController.getDistricts);
   router.get('/location/:cityId/:districtId/ward', LocationController.getWards);
 
@@ -176,6 +178,9 @@ export const initialRouterVersion1 = (app: Application) => {
   router.post('/tag', tagController.createTag);
   router.put('/tag/:id', tagController.updateTag);
   router.delete('/tag', tagController.deleteTag);
+
+  router.get('/report/user-create-today', UserController.getPartnerCreateToday);
+  router.get('/report/post-per-weed', PostController.getCountPostLastSevenDays);
 
   return app.use(`/api/v1`, router);
 };
