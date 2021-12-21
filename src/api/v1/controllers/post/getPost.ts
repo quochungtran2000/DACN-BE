@@ -9,7 +9,7 @@ const getPost = async (req: Request, res: Response) => {
       .createQueryBuilder('pq')
       .leftJoinAndSelect('pq.author', 'au')
       .where('pq.id = :id')
-      .andWhere('pg.is_public = true')
+      .andWhere('pq.is_public = true')
       .setParameters({ id: +req.params.id })
       .getOne();
 
