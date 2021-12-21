@@ -17,7 +17,12 @@ const updatePartner = async (
     await getRepository(Partner)
       .createQueryBuilder()
       .update(Partner)
-      .set({ fullname: data.fullname, email: data.email, phone: data.phone })
+      .set({
+        fullname: data.fullname,
+        email: data.email,
+        phone: data.phone,
+        image_url: data.image_url,
+      })
       .where('id =:userId', { userId })
       .execute();
 
