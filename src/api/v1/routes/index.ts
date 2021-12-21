@@ -120,6 +120,10 @@ export const initialRouterVersion1 = (app: Application) => {
   router.get('/location/:cityId/district', LocationController.getDistricts);
   router.get('/location/:cityId/:districtId/ward', LocationController.getWards);
 
+  //me
+  router.get('/me/my-post', UserController.getPost);
+  router.get('/me/my-job', UserController.getJob);
+
   // Post Router
 
   router.get('/post', PostController.getPosts);

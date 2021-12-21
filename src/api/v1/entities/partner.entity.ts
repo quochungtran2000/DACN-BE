@@ -46,7 +46,7 @@ export class Partner extends BaseEntity implements IPartner {
 
   @OneToMany(() => PartnerRole, (pr) => pr.partner)
   @JoinColumn({ name: 'id', referencedColumnName: 'partner_id' })
-  partner_role!: PartnerRole;
+  partner_role!: PartnerRole[];
 
   @OneToMany(() => Job, (job) => job.author)
   @JoinColumn({ name: 'id', referencedColumnName: 'author_id' })

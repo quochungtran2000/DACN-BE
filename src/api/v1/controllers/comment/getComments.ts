@@ -16,6 +16,7 @@ const getComments = async (req: Request, res: Response) => {
       .leftJoinAndSelect('pq.author', 'au')
       .leftJoinAndSelect('pq.post', 'po')
       .where('po.id = :postId')
+      .orderBy('pq.create_date', 'ASC')
       .setParameters({ postId: postId })
       .getManyAndCount();
 

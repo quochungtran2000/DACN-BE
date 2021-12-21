@@ -1,4 +1,5 @@
 import changePassword from './changePassword';
+import getJob from './getJob';
 import getPartner from './getPartner';
 import getPartnerCreateToday from './getPartnerCreateToday';
 import getPartners from './getPartners';
@@ -12,6 +13,7 @@ export const UserController = {
   changePassword: changePassword,
   updatePartner: updatePartner,
   getPost: getPost,
+  getJob: getJob,
   getPostRequest: getPostRequest,
   getPartnerCreateToday: getPartnerCreateToday,
 };

@@ -9,15 +9,19 @@ const me = async (req: Request, res: Response) => {
 
     const data = await getRepository(Partner)
       .createQueryBuilder('user')
+      .leftJoinAndSelect('user.partner_role', 'pr')
+      .leftJoinAndSelect('pr.role', 'r')
       .where('user.id =:userId')
       .setParameters({ userId: userId })
       .getOne();
 
     if (!data) return res.status(404).json({ message: 'USER NOT FOUND' });
 
-    const { password, ...userData } = data;
+    const { password, partner_role, ...userData } = data;
+    const [partnerRole] = partner_role;
+    const role = partnerRole.role.role;
 
-    res.status(200).json(userData);
+    res.status(200).json({ ...userData, role: role });
   } catch (err: any) {
     console.error(err);
     res.status(400).json({ message: err.message });
