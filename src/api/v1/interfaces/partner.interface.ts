@@ -22,4 +22,12 @@ export interface IBasePartner {
 
 export interface IPublicPartner extends IBaseDateTime, IBasePartner {
   id: number;
+  image_url: string;
+}
+
+export interface IUpdatePartner {
+  fullname: string;
+  email: string;
+  phone: string;
+  image_url: string;
 }

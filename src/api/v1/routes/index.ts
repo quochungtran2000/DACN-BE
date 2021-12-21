@@ -105,12 +105,14 @@ export const initialRouterVersion1 = (app: Application) => {
   // User router
 
   router.get('/user', UserController.getPartners);
+  router.put('/user', UserController.updatePartner);
+  router.post('/user/change-password', UserController.changePassword);
   router.get('/user/:id', UserController.getPartner);
   router.put('/user/:id', UserController.updatePartner);
   router.put('/user/:id/change-password', UserController.changePassword);
   router.get('/user/:id/post', UserController.getPost);
   router.get('/user/:id/post-request', UserController.getPostRequest);
-  // router.delete('/user/:id', UserController.);
+  router.delete('/user/:id', UserController.deleteUser);
 
   //  Location Router
 

@@ -27,6 +27,7 @@ export const mappingPartner = (data: Partner): IPublicPartner => {
     phone: data.phone,
     create_date: data.create_date,
     update_date: data.update_date,
+    image_url: data.image_url,
   };
 };
 
@@ -158,6 +159,7 @@ export const mappingComment = (data: Comment): IPublicComment => {
     author_name: data.author.fullname,
     create_date: data.create_date,
     update_date: data.update_date,
+    author_image_url: data.author.image_url,
   };
 };
 

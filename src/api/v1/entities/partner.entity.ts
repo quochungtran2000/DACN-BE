@@ -34,6 +34,12 @@ export class Partner extends BaseEntity implements IPartner {
   @Column({ name: 'fullname' })
   fullname!: string;
 
+  @Column({ name: 'image_url' })
+  image_url!: string;
+
+  @Column({ name: 'ban' })
+  ban!: boolean;
+
   @Column({ name: 'create_date', type: Date })
   create_date!: Date;
 

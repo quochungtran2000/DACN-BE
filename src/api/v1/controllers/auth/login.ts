@@ -30,6 +30,9 @@ const login = async (
 
     const { password: hashPassword, partner_role, ...dataUser } = user;
 
+    if (user.ban)
+      return res.status(400).json({ message: 'tài khoản này đang bị cấm' });
+
     console.log(dataUser);
 
     const matchPassword = await comparePassword(hashPassword, password);

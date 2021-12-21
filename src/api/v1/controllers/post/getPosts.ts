@@ -15,6 +15,7 @@ const getPosts = async (req: Request, res: Response) => {
       .leftJoinAndSelect('pc.category', 'category')
       .leftJoinAndSelect('pq.postTag', 'pt')
       .leftJoinAndSelect('pt.tag', 'tag')
+      .where('pq.is_public = true')
       .take(size)
       .skip((page - 1) * size)
       .orderBy('pq.create_date', 'DESC')

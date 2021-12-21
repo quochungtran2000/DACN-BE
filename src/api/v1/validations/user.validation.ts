@@ -20,8 +20,15 @@ export const basePartnerValidate = Joi.object({
   fullname: Joi.string().required(),
 });
 
-export const updatePartnerValidation = basePartnerValidate;
+// export const updatePartnerValidation = basePartnerValidate;
 
 export const createPartnerValidation = basePartnerValidate.keys({
   role: Joi.string().required().valid(UserRole.HR, UserRole.USER),
+});
+
+export const updatePartnerValidation = Joi.object({
+  fullname: Joi.string().required(),
+  email: Joi.string().required().email(),
+  phone: Joi.string().required(),
+  image_url: Joi.string(),
 });

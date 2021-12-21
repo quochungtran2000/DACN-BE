@@ -17,4 +17,5 @@ export interface IPublicComment extends ICreateComment, IBaseDateTime {
   id: number;
   author_name: string;
   author_id: number;
+  author_image_url: string;
 }
